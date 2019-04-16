@@ -14,4 +14,8 @@ public class Ingredient {
     private String name;
     private double cost;
 
+    @ManyToOne
+    @JoinColumn("lunch")
+    private List<Lunch> lunch;
+
 }

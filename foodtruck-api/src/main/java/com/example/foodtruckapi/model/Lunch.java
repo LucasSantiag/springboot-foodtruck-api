@@ -15,7 +15,7 @@ public class Lunch {
     private Long id;
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedby = "lunch")
     private List<Ingredient> ingredients = new ArrayList<>();
 
 }
