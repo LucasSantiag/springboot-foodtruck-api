@@ -3,6 +3,7 @@ package com.example.foodtruckapi.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,9 +14,5 @@ public class Ingredient {
     private Long id;
     private String name;
     private double cost;
-
-    @ManyToOne
-    @JoinColumn("lunch")
-    private List<Lunch> lunch;
 
 }
