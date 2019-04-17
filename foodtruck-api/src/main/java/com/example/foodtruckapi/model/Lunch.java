@@ -20,4 +20,8 @@ public class Lunch {
     @ManyToMany()
     private List<Ingredient> ingredients = new ArrayList<>();
 
+    public Lunch(String name, List<Ingredient> ingredients) {
+        this.name = name;
+        this.ingredients = ingredients;
+    }
 }
