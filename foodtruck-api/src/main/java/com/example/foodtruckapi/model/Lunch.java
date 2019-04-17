@@ -17,7 +17,7 @@ public class Lunch {
     private Long id;
     private String name;
 
-    @ManyToMany()
+    @ManyToMany(mappedBy = "lunch")
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public Lunch(String name, List<Ingredient> ingredients) {

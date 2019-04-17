@@ -15,6 +15,11 @@ public class Ingredient {
     private String name;
     private double cost;
 
+    @ManyToMany
+    @JoinTable(name = "ingredientLunch", joinColumns = @JoinColumn(name = "lunch"), inverseJoinColumns =
+            @JoinColumn(name = "ingredient"))
+    private List<Lunch> lunch = new ArrayList<>();
+
     public Ingredient(String name, double cost) {
         this.name = name;
         this.cost = cost;
