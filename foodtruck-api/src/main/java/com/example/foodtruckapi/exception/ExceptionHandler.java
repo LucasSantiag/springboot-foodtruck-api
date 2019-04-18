@@ -13,10 +13,7 @@ import static org.springframework.http.ResponseEntity.status;
 @ControllerAdvice
 public class ExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<StandardError> objectNotFound(Exception e, HttpServletRequest request) {
-        StandardError err = new StandardError(NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());   
-        return status(NOT_FOUND).body(err);
-    }
+    @ExceptionHandler
+    public
 
 }
