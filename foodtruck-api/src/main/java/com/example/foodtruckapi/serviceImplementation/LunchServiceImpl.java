@@ -1,7 +1,9 @@
-package com.example.foodtruckapi.service;
+package com.example.foodtruckapi.serviceImplementation;
 
+import com.example.foodtruckapi.exception.EntityNotFoundException;
 import com.example.foodtruckapi.model.Lunch;
 import com.example.foodtruckapi.repository.LunchRepository;
+import com.example.foodtruckapi.service.LunchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ import java.util.Optional;
 import static java.util.Arrays.asList;
 
 @Service
-public class LunchServiceImpl implements  LunchService{
+public class LunchServiceImpl implements LunchService {
 
     private LunchRepository repository;
 
@@ -23,7 +25,7 @@ public class LunchServiceImpl implements  LunchService{
     @Override
     public Lunch findById(Long id){
         Optional<Lunch> lunchObject = repository.findById(id);
-        return lunchObject.orElseThrow(() -> new Exception("Lunch Not Found"));
+        return lunchObject.orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

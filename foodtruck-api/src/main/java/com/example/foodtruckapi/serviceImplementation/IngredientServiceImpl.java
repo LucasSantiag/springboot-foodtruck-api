@@ -1,7 +1,9 @@
-package com.example.foodtruckapi.service;
+package com.example.foodtruckapi.serviceImplementation;
 
+import com.example.foodtruckapi.exception.EntityNotFoundException;
 import com.example.foodtruckapi.model.Ingredient;
 import com.example.foodtruckapi.repository.IngredientRepository;
+import com.example.foodtruckapi.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public Ingredient findById(Long id){
         Optional<Ingredient> ingredientObject = repository.findById(id);
-        return ingredientObject.orElseThrow(() -> new Exception("Lunch Not Found"));
+        return ingredientObject.orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
