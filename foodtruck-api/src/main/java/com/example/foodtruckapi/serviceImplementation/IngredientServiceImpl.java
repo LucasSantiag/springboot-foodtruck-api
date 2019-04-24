@@ -30,21 +30,24 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public List<Ingredient> getAll(){
-        return repository.findAll();
+        Optional<Ingredient> ingredientObject = repository.findAll();
+        return ingredientObject.orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public List<Ingredient> save(Ingredient ingredient){
-        Ingredient ingredientObject = new Ingredient(ingredient.getName(), ingredient.getCost());
-        return repository.saveAll(asList(ingredientObject));
+        Ingredient ingredient = new Ingredient(ingredient.getName(), ingredient.getCost());
+        Optional<Ingredient> ingredientObject = repository.saveAll(asList(ingredient)); 
+        return ingredientObject.orElseThrow(InvalidBodyException::new);
     }
 
     @Override
-    public void update(Long id, Ingredient ingredient){
-        Ingredient ingredientObject = this.findById(id);
-        ingredientObject.setName(ingredient.getName());
-        ingredientObject.setCost(ingredient.getCost());
-        repository.saveAll(asList(ingredientObject));
+    public List<Ingredient> update(Long id, Ingredient ingredient){
+        Ingredient ingredient = this.findById(id);
+        ingredient.setName(ingredient.getName());
+        ingredient.setCost(ingredient.getCost());
+        Optional<Ingredient> ingredientObject = repository.saveAll(asList(ingredient));
+        return ingredientObject.orElseThrow(InvalidBodyException::new);
     }
 
     @Override

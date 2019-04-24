@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.servlet.http.HttpServletRequest;
 
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.ResponseEntity.status;
 
 @ControllerAdvice
@@ -23,8 +23,8 @@ public class ExceptionsHandler extends ResponseEntityExceptionHandler {
         return status(NOT_FOUND).body(err);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> objectNotFound(Exception error, HttpServletRequest request) {
+    @ExceptionHandler(InvalidBodyException.class)
+    public ResponseEntity<?> objectNotFound(InvalidBodyException error, HttpServletRequest request) {
         ErrorAtributes err = new ErrorAtributes(error.getMessage(), error.getLocalizedMessage(), request.getRequestURI(),
                 System.currentTimeMillis());
         return status(BAD_REQUEST).body(err);

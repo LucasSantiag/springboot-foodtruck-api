@@ -37,16 +37,17 @@ public class LunchServiceImpl implements LunchService {
     @Override
     public List<Lunch> save(Lunch lunch){
         Lunch lunch = new Lunch(lunch.getName(), lunch.getIngredients());
-        Optional<Lunch> lunchObject = repository.saveAll(asList(lunchObject)); 
+        Optional<Lunch> lunchObject = repository.saveAll(asList(lunch)); 
         return lunchObject.orElseThrow(InvalidBodyException::new);
     }
 
     @Override
-    public void update(Long id, Lunch lunch){
-        Lunch lunchObject = this.findById(id);
-        lunchObject.setName(lunch.getName());
-        lunchObject.setIngredients(lunch.getIngredients());
-        repository.saveAll(asList(lunchObject));
+    public List<Lunch> update(Long id, Lunch lunch){
+        Lunch lunch = this.findById(id);
+        lunch.setName(lunch.getName());
+        lunch.setIngredients(lunch.getIngredients());
+        Optional<Lunch> lunchObject = repository.saveAll(asList(lunch));
+        return lunchObject.orElseThrow(InvalidBodyException::new);
     }
 
     @Override

@@ -12,7 +12,7 @@ public interface IngredientService {
 
     List<Ingredient> save(Ingredient ingredient) ;
 
-    void update(Long id, Ingredient ingredient);
+    List<Ingredient> update(Long id, Ingredient ingredient);
 
     void delete(Long id);
 }

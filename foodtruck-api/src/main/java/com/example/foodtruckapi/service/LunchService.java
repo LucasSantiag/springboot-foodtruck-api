@@ -12,7 +12,7 @@ public interface LunchService {
 
     List<Lunch> save(Lunch lunch);
 
-    void update (Long id, Lunch lunch);
+    List<Lunch> update (Long id, Lunch lunch);
 
     void delete (Long id);
 }
