@@ -17,10 +17,17 @@ import static org.springframework.http.ResponseEntity.status;
 public class ExceptionsHandler extends ResponseEntityExceptionHandler {
 
    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Object> objectNotFound(EntityNotFoundException error, HttpServletRequest request) {
+    public ResponseEntity<?> objectNotFound(EntityNotFoundException error, HttpServletRequest request) {
        ErrorAtributes err = new ErrorAtributes(error.getMessage(), error.getLocalizedMessage(),request.getRequestURI(),
                System.currentTimeMillis());
         return status(NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> objectNotFound(Exception error, HttpServletRequest request) {
+        ErrorAtributes err = new ErrorAtributes(error.getMessage(), error.getLocalizedMessage(), request.getRequestURI(),
+                System.currentTimeMillis());
+        return status(BAD_REQUEST).body(err);
     }
 
 }

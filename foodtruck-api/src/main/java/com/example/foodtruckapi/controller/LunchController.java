@@ -1,7 +1,6 @@
 package com.example.foodtruckapi.controller;
 
 import com.example.foodtruckapi.model.Lunch;
-import com.example.foodtruckapi.service.IngredientService;
 import com.example.foodtruckapi.service.LunchService;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +12,7 @@ public class LunchController {
 
     private LunchService lunchService;
 
-    private IngredientService ingredientService;
-
-    public LunchController(LunchService lunchService, IngredientService ingredientService) {
+    public LunchController(LunchService lunchService) {
         this.lunchService = lunchService;
         this.ingredientService = ingredientService;
     }
@@ -30,7 +27,7 @@ public class LunchController {
         return this.lunchService.findById(id);
     }
 
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public void remove(@PathVariable("id") Long id) {
         this.lunchService.delete(id);
     }
@@ -39,5 +36,10 @@ public class LunchController {
     public List<Lunch> save(@RequestBody Lunch lunch) {
         this.lunchService.save(lunch);
         return this.lunchService.getAll();
+    }
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable("id") Long id, @RequestBody Lunch lunch) {
+        this.lunchService.delete(id, lunch);
     }
 }
