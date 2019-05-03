@@ -30,24 +30,17 @@ public class LunchServiceImpl implements LunchService {
 
     @Override
     public List<Lunch> getAll(){
-        Optional<Lunch> lunchObject = repository.findAll();
-        return lunchObject.orElseThrow(EntityNotFoundException::new);
+        return repository.findAll();
     }
 
     @Override
     public List<Lunch> save(Lunch lunch){
-        Lunch lunch = new Lunch(lunch.getName(), lunch.getIngredients());
-        Optional<Lunch> lunchObject = repository.saveAll(asList(lunch)); 
-        return lunchObject.orElseThrow(InvalidBodyException::new);
+        return repository.saveAll(asList(lunch));
     }
 
     @Override
     public List<Lunch> update(Long id, Lunch lunch){
-        Lunch lunch = this.findById(id);
-        lunch.setName(lunch.getName());
-        lunch.setIngredients(lunch.getIngredients());
-        Optional<Lunch> lunchObject = repository.saveAll(asList(lunch));
-        return lunchObject.orElseThrow(InvalidBodyException::new);
+        return repository.saveAll(asList(lunch));
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.foodtruckapi.controller;
 
+import com.example.foodtruckapi.model.Ingredient;
 import com.example.foodtruckapi.service.IngredientService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/ingredient")
@@ -37,6 +39,6 @@ public class IngredientController {
 
     @PutMapping("/{id}")
     public void update(@PathVariable("id") Long id, @RequestBody Ingredient ingredient) {
-        this.service.delete(id, ingredient);
+        this.service.update(id, ingredient);
     }
 }

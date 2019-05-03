@@ -14,7 +14,6 @@ public class LunchController {
 
     public LunchController(LunchService lunchService) {
         this.lunchService = lunchService;
-        this.ingredientService = ingredientService;
     }
 
     @GetMapping()
@@ -40,6 +39,6 @@ public class LunchController {
 
     @PutMapping("/{id}")
     public void update(@PathVariable("id") Long id, @RequestBody Lunch lunch) {
-        this.lunchService.delete(id, lunch);
+        this.lunchService.update(id, lunch);
     }
 }
