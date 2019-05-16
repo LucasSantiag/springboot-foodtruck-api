@@ -15,7 +15,7 @@ public class ExceptionsHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> objectNotFound(Exception exception, HttpServletRequest request) {
-        ExceptionsAtributes err = new ExceptionsAtributes(exception.getMessage(), exception.getLocalizedMessage(), request.getRequestURI(), System.currentTimeMillis());
+        ExceptionsAttributes err = new ExceptionsAttributes(exception.getMessage(), exception.getLocalizedMessage(), request.getRequestURI(), System.currentTimeMillis());
         return status(NOT_FOUND).body(err);
     }
 }
