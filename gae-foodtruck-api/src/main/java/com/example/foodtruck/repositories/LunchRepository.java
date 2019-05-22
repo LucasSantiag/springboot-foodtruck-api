@@ -4,5 +4,5 @@ import com.example.foodtruck.models.Lunch;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LunchRepository extends <Lunch, Long>{
+public interface LunchRepository extends CassandraRepository <Lunch, Long>{
 }
