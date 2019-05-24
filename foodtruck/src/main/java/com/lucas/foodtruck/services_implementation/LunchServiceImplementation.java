@@ -1,10 +1,9 @@
-package com.example.foodtruck.services_implementation;
+package com.lucas.foodtruck.services_implementation;
 
-import com.example.foodtruck.exceptions.EntityNotFoundException;
-import com.example.foodtruck.models.Lunch;
-import com.example.foodtruck.repositories.LunchRepository;
-import com.example.foodtruck.services.LunchService;
-
+import com.lucas.foodtruck.exceptions.EntityNotFoundException;
+import com.lucas.foodtruck.models.Lunch;
+import com.lucas.foodtruck.repositories.LunchRepository;
+import com.lucas.foodtruck.services.LunchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

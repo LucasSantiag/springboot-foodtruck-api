@@ -1,9 +1,9 @@
 package com.lucas.foodtruck.repositories;
 
-import com.example.foodtruckapi.model.Ingredient;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import com.lucas.foodtruck.models.Ingredient;
+import org.springframework.data.cassandra.repository.CassandraRepository;
+import org.springframework.stereotype.Repository;
 
-@Service
-public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
+@Repository
+public interface IngredientRepository extends CassandraRepository<Ingredient, Long> {
 }

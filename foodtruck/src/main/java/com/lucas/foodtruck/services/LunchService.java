@@ -1,6 +1,6 @@
-package com.example.foodtruck.services;
+package com.lucas.foodtruck.services;
 
-import com.example.foodtruck.models.Lunch;
+import com.lucas.foodtruck.models.Lunch;
 
 public interface LunchService {
 
@@ -10,7 +10,7 @@ public interface LunchService {
 
     Iterable<Lunch> save(Lunch lunch);
 
-    Iterable<Lunch> update (Long id, Lunch lunch);
+    Iterable<Lunch> update(Long id, Lunch lunch);
 
-    void delete (Long id);
+    void delete(Long id);
 }

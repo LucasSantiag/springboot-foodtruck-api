@@ -1,4 +1,4 @@
-package com.example.foodtruck.exceptions;
+package com.lucas.foodtruck.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

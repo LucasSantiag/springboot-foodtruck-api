@@ -1,6 +1,6 @@
-package com.example.foodtruck.services;
+package com.lucas.foodtruck.services;
 
-import com.example.foodtruck.models.Ingredient;
+import com.lucas.foodtruck.models.Ingredient;
 
 public interface IngredientService {
 
@@ -12,5 +12,5 @@ public interface IngredientService {
 
     Iterable<Ingredient> update(Long id, Ingredient ingredient);
 
-    void delete (Long id);
+    void delete(Long id);
 }

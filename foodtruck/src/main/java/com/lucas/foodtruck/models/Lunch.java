@@ -1,27 +1,19 @@
 package com.lucas.foodtruck.models;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Table
 @Data
 public class Lunch {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @PrimaryKey
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "lunch")
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    public Lunch(String name, List<Ingredient> ingredients) {
-        this.name = name;
-        this.ingredients = ingredients;
-    }
 }
