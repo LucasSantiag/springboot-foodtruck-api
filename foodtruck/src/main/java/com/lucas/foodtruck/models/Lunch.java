@@ -1,16 +1,17 @@
 package com.lucas.foodtruck.models;
 
 import lombok.Data;
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Table
+@Entity
 @Data
 public class Lunch {
-    @PrimaryKey
+    @Id
     private Long id;
     private String name;
 
