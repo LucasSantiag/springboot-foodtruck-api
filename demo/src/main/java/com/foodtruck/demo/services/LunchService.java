@@ -4,7 +4,7 @@ import com.foodtruck.demo.models.Lunch;
 
 public interface LunchService {
 
-    Lunch findById(Long id);
+    Lunch getById(Long id);
 
     Iterable<Lunch> getAll();
 

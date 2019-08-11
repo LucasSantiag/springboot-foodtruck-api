@@ -22,7 +22,7 @@ public class LunchServiceImplementation implements LunchService {
     }
 
     @Override
-    public Lunch findById(Long id){
+    public Lunch getById(Long id){
         Optional<Lunch> lunchObject = repository.findById(id);
         return lunchObject.orElseThrow(EntityNotFoundException::new);
     }
@@ -40,7 +40,7 @@ public class LunchServiceImplementation implements LunchService {
 
     @Override
     public void delete(Long id){
-        this.findById(id);
+        this.getById(id);
         repository.deleteById(id);
     }
 }
