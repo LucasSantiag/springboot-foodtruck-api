@@ -7,9 +7,9 @@ import com.foodtruck.demo.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-
-import static java.util.Arrays.asList;
 
 @Service
 public class IngredientServiceImplementation implements IngredientService {
@@ -17,7 +17,7 @@ public class IngredientServiceImplementation implements IngredientService {
     private IngredientRepository repository;
 
     @Autowired
-    public IngredientServiceImplementation(IngredientRepository repository){
+    public IngredientServiceImplementation(IngredientRepository repository) {
         this.repository = repository;
     }
 
@@ -28,22 +28,22 @@ public class IngredientServiceImplementation implements IngredientService {
     }
 
     @Override
-    public Iterable<Ingredient> getAll(){
+    public List<Ingredient> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Iterable<Ingredient> save(Ingredient ingredient){
-        return repository.saveAll(asList(ingredient));
+    public List<Ingredient> save(Ingredient ingredient) {
+        return repository.saveAll(Collections.singletonList(ingredient));
     }
 
     @Override
-    public Iterable<Ingredient> update(Long id, Ingredient ingredient){
-        return repository.saveAll(asList(ingredient));
+    public List<Ingredient> update(Long id, Ingredient ingredient) {
+        return repository.saveAll(Collections.singletonList(ingredient));
     }
 
     @Override
-    public void delete(Long id){
+    public void delete(Long id) {
         this.findById(id);
         repository.deleteById(id);
     }
