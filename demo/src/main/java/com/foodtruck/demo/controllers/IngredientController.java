@@ -3,33 +3,55 @@ package com.foodtruck.demo.controllers;
 import com.foodtruck.demo.models.Ingredient;
 import com.foodtruck.demo.services_implementation.IngredientServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
+@Controller
 @RestController
-@RequestMapping(path="/ingredient")
+@RequestMapping(path = "/ingredient")
 public class IngredientController {
 
+    private IngredientServiceImplementation serviceImplementation;
+
     @Autowired
-    private IngredientServiceImplementation ingredientServiceImplementation;
-
-    @PostMapping(path="/add/")
-    public @ResponseBody String addIngredient (@RequestBody Ingredient ingredient) {
-        System.out.println(ingredient.getName());
-        ingredientServiceImplementation.save(ingredient);
-        return "Saved";
+    public IngredientController(IngredientServiceImplementation serviceImplementation) {
+        this.serviceImplementation = serviceImplementation;
     }
 
-    @GetMapping(path="/all")
-    public @ResponseBody List<Ingredient> getAllIngredient (){
-        return ingredientServiceImplementation.getAll();
+    @PostMapping
+    public ResponseEntity addIngredient(@RequestBody Ingredient ingredient) {
+        ingredient = serviceImplementation.save(ingredient);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ingredient.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
-    @GetMapping(path="/{id}")
-    public @ResponseBody Ingredient getIngredient (@PathVariable("id") Long id){
-        return ingredientServiceImplementation.findById(id);
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody List<Ingredient> getAllIngredient() {
+        return serviceImplementation.getAll();
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Ingredient getIngredient(@PathVariable Long id) {
+        return serviceImplementation.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteIngredient(@PathVariable long id) {
+        serviceImplementation.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public  void updateIngredient(@PathVariable Long id, @RequestBody Ingredient ingredient) {
+        serviceImplementation.update(id, ingredient);
+    }
 }

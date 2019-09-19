@@ -4,13 +4,13 @@ import com.foodtruck.demo.models.Lunch;
 
 public interface LunchService {
 
-    Lunch getById(Long id);
+    Lunch findById(Long id);
 
     Iterable<Lunch> getAll();
 
-    Iterable<Lunch> save(Lunch lunch);
+    Lunch save(Lunch lunch);
 
-    Iterable<Lunch> update(Long id, Lunch lunch);
+    void update(Long id, Lunch lunch);
 
     void delete(Long id);
 }

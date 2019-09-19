@@ -7,7 +7,6 @@ import com.foodtruck.demo.services.LunchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ public class LunchServiceImplementation implements LunchService {
     }
 
     @Override
-    public Lunch getById(Long id) {
+    public Lunch findById(Long id) {
         Optional<Lunch> lunchObject = repository.findById(id);
         return lunchObject.orElseThrow(EntityNotFoundException::new);
     }
@@ -33,18 +32,20 @@ public class LunchServiceImplementation implements LunchService {
     }
 
     @Override
-    public List<Lunch> save(Lunch lunch) {
-        return repository.saveAll(Collections.singletonList(lunch));
+    public Lunch save(Lunch lunch) {
+        return repository.save(lunch);
     }
 
     @Override
-    public List<Lunch> update(Long id, Lunch lunch) {
-        return repository.saveAll(Collections.singletonList(lunch));
+    public void update(Long id, Lunch lunch) {
+        this.findById(id);
+        lunch.setId(id);
+        repository.save(lunch);
     }
 
     @Override
     public void delete(Long id) {
-        this.getById(id);
+        this.findById(id);
         repository.deleteById(id);
     }
 }

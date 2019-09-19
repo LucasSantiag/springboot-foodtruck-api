@@ -7,7 +7,6 @@ import com.foodtruck.demo.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,13 +32,15 @@ public class IngredientServiceImplementation implements IngredientService {
     }
 
     @Override
-    public List<Ingredient> save(Ingredient ingredient) {
-        return repository.saveAll(Collections.singletonList(ingredient));
+    public Ingredient save(Ingredient ingredient) {
+        return repository.save(ingredient);
     }
 
     @Override
-    public List<Ingredient> update(Long id, Ingredient ingredient) {
-        return repository.saveAll(Collections.singletonList(ingredient));
+    public void  update(Long id, Ingredient ingredient) {
+        this.findById(id);
+        ingredient.setId(id);
+        repository.save(ingredient);
     }
 
     @Override

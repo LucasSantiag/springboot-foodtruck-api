@@ -1,7 +1,8 @@
 package com.foodtruck.demo.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,21 +10,12 @@ import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "INGREDIENT")
 public class Ingredient {
-    @Autowired
-    public Ingredient(Ingredient ingredient) {
-        this.name = ingredient.name;
-        this.cost = ingredient.cost;
-    }
-
-    public Ingredient(String name, double cost) {
-        this.name = name;
-        this.cost = cost;
-    }
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double cost;
