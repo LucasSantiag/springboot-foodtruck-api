@@ -3,11 +3,13 @@ package com.foodtruck.demo.services;
 import com.foodtruck.demo.dto.LunchDto;
 import com.foodtruck.demo.models.Lunch;
 
+import java.util.List;
+
 public interface LunchService {
 
     Lunch findById(Long id);
 
-    Iterable<Lunch> getAll();
+    List<Lunch> getAll();
 
     Lunch save(Lunch lunch);
 

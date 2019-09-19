@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "LUNCH")
 public class Lunch {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
@@ -38,5 +38,4 @@ public class Lunch {
         this.ingredients = ingredients;
         return this;
     }
-
 }
