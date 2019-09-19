@@ -23,4 +23,20 @@ public class Lunch {
             joinColumns = {@JoinColumn(name = "lunch_id")},
             inverseJoinColumns = {@JoinColumn(name = "ingredient_id")})
     private List<Ingredient> ingredients;
+
+    public Lunch setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Lunch setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Lunch setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        return this;
+    }
+
 }
