@@ -18,6 +18,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private List<CustomLunch> lunchList = new ArrayList<>();
+    private List<Lunch> lunchList = new ArrayList<>();
     private double cost;
 }
