@@ -5,19 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "ORDER")
-public class Order {
+@Table(name = "REQUEST")
+public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private List<Lunch> lunchList = new ArrayList<>();
+   // private List<Food> foodList;
     private double cost;
 }

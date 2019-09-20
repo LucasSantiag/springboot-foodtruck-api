@@ -1,8 +1,8 @@
 package com.foodtruck.demo.controllers;
 
-import com.foodtruck.demo.dto.LunchDto;
-import com.foodtruck.demo.models.Lunch;
-import com.foodtruck.demo.services_implementation.LunchServiceImplementation;
+import com.foodtruck.demo.dto.BaseFoodDto;
+import com.foodtruck.demo.models.BaseFood;
+import com.foodtruck.demo.services_implementation.BaseFoodServiceImplementation;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
@@ -19,25 +19,26 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping(path = "/lunch")
-public class LunchController {
+@RequestMapping(path = "/basefood")
+public class BaseFoodController {
 
-    private Logger logger = LoggerFactory.getLogger(LunchController.class);
+    private Logger logger = LoggerFactory.getLogger(BaseFoodController.class);
 
-    private LunchServiceImplementation serviceImplementation;
+    private BaseFoodServiceImplementation serviceImplementation;
 
     @Autowired
-    public LunchController(LunchServiceImplementation serviceImplementation) {
+    public BaseFoodController(BaseFoodServiceImplementation serviceImplementation) {
         this.serviceImplementation = serviceImplementation;
     }
 
     @PostMapping
-    @ApiOperation("Create a Lunch")
-    public ResponseEntity addIngredient(@ApiParam(name = "lunch", value = "lunch") @RequestBody Lunch lunch) {
+    @ApiOperation("Create a BaseFood")
+    public ResponseEntity addBaseFood(@ApiParam(name = "baseFood", value = "baseFood") @RequestBody BaseFood baseFood,
+                                      @ApiParam(name = "listIngredient", value = "listIngredient") @RequestBody List<Long> listIngredient) {
         logger.info("Starting the creation");
-        lunch = serviceImplementation.save(lunch);
+        baseFood = serviceImplementation.save(baseFood, listIngredient);
         logger.info("Created");
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(lunch.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(baseFood.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
@@ -45,32 +46,32 @@ public class LunchController {
     @ApiOperation("Search for all Lunches")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<Lunch> getAllLunch() {
+    List<BaseFood> getAllBaseFood() {
         logger.info("Starting the search");
         return serviceImplementation.getAll();
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Search for a specific Lunch by ID")
+    @ApiOperation("Search for a specific BaseFood by ID")
     @ResponseStatus(HttpStatus.OK)
-    public Lunch getLunch(@ApiParam(name = "id", value = "long") @PathVariable Long id) {
+    public BaseFood getBaseFood(@ApiParam(name = "id", value = "long") @PathVariable Long id) {
         logger.info("Starting the search");
         return serviceImplementation.findById(id);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Deletes a Lunch")
+    @ApiOperation("Deletes a BaseFood")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLunch(@ApiParam(name = "id", value = "long") @PathVariable long id) {
+    public void deleteBaseFood(@ApiParam(name = "id", value = "long") @PathVariable long id) {
         logger.info("Starting the deletion");
         serviceImplementation.delete(id);
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("Updates an existing Lunch")
+    @ApiOperation("Updates an existing BaseFood")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateLunch(@ApiParam(name = "id", value = "long") @PathVariable Long id,
-                            @ApiParam(name = "lunch", value = "lunch") @RequestBody LunchDto lunch) {
+    public void updateBaseFood(@ApiParam(name = "id", value = "long") @PathVariable Long id,
+                            @ApiParam(name = "lunch", value = "lunch") @RequestBody BaseFoodDto lunch) {
         logger.info("Starting the update");
         serviceImplementation.update(id, lunch);
     }

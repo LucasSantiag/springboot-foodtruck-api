@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 @Builder
-public class LunchDto implements Serializable {
+public class BaseFoodDto implements Serializable {
     private static final long serialVersionUID = 3359555390319803845L;
     private String name;
 }

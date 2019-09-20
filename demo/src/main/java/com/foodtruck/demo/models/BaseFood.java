@@ -11,30 +11,30 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "LUNCH")
-public class Lunch {
+@Table(name = "BASEFOOD")
+public class BaseFood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "lunch_ingredients",
-            joinColumns = {@JoinColumn(name = "lunch_id")},
+    @JoinTable(name = "basefood_ingredients",
+            joinColumns = {@JoinColumn(name = "basefood_id")},
             inverseJoinColumns = {@JoinColumn(name = "ingredient_id")})
     private List<Ingredient> ingredients;
 
-    public Lunch setId(Long id) {
+    public BaseFood setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public Lunch setName(String name) {
+    public BaseFood setName(String name) {
         this.name = name;
         return this;
     }
 
-    public Lunch setIngredients(List<Ingredient> ingredients) {
+    public BaseFood setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
         return this;
     }

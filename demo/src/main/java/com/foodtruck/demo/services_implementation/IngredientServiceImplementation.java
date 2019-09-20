@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class IngredientServiceImplementation implements IngredientService {
 
-    private static final Logger logger = LoggerFactory.getLogger(LunchServiceImplementation.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseFoodServiceImplementation.class);
 
     private IngredientRepository repository;
 

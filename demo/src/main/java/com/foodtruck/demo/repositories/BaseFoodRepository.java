@@ -1,9 +1,9 @@
 package com.foodtruck.demo.repositories;
 
-import com.foodtruck.demo.models.Order;
+import com.foodtruck.demo.models.BaseFood;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Long, Order> {
+public interface BaseFoodRepository extends JpaRepository<BaseFood, Long> {
 }

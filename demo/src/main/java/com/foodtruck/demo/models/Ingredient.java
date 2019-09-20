@@ -21,7 +21,7 @@ public class Ingredient {
     private double cost;
 
     @ManyToMany(mappedBy = "ingredients")
-    private List<Lunch> lunch;
+    private List<BaseFood> baseFoods;
 
     public Ingredient setId(Long id) {
         this.id = id;
@@ -38,8 +38,8 @@ public class Ingredient {
         return this;
     }
 
-    public Ingredient setLunch(List<Lunch> lunch) {
-        this.lunch = lunch;
+    public Ingredient setBaseFoods(List<BaseFood> baseFoods) {
+        this.baseFoods = baseFoods;
         return this;
     }
 }
