@@ -34,9 +34,9 @@ public class IngredientController {
     @PostMapping
     @ApiOperation("Create an Ingredient")
     public ResponseEntity addIngredient(@ApiParam(name = "ingredient", value = "ingredient") @RequestBody Ingredient ingredient) {
-        logger.info("Starting the creation");
+        logger.info("Starting the Ingredient creation");
         ingredient = serviceImplementation.save(ingredient);
-        logger.info("Created");
+        logger.info("Ingredient Created");
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ingredient.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
@@ -46,7 +46,7 @@ public class IngredientController {
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     List<Ingredient> getAllIngredient() {
-        logger.info("Starting the search");
+        logger.info("Starting the Ingredient search");
         return serviceImplementation.getAll();
     }
 
@@ -54,7 +54,7 @@ public class IngredientController {
     @ApiOperation("Search for a specific Ingredient by ID")
     @ResponseStatus(HttpStatus.OK)
     public Ingredient getIngredient(@ApiParam(name = "id", value = "long") @PathVariable Long id) {
-        logger.info("Starting the search");
+        logger.info("Starting the Ingredient search");
         return serviceImplementation.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class IngredientController {
     @ApiOperation("Deletes an Ingredient")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteIngredient(@ApiParam(name = "id", value = "long") @PathVariable long id) {
-        logger.info("Starting the deletion");
+        logger.info("Starting the Ingredient deletion");
         serviceImplementation.delete(id);
     }
 
@@ -71,7 +71,7 @@ public class IngredientController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateIngredient(@ApiParam(name = "id", value = "long") @PathVariable Long id,
                                  @ApiParam(name = "ingredient", value = "ingredient") @RequestBody IngredientDto ingredient) {
-        logger.info("Starting the update");
+        logger.info("Starting the Ingredient update");
         serviceImplementation.update(id, ingredient);
     }
 }

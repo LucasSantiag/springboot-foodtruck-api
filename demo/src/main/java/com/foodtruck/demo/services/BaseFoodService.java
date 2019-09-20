@@ -11,7 +11,7 @@ public interface BaseFoodService {
 
     List<BaseFood> getAll();
 
-    BaseFood save(BaseFood baseFood, List<Long> ingredientList);
+    BaseFood save(BaseFood baseFood);
 
     void update(Long id, BaseFoodDto baseFoodDto);
 

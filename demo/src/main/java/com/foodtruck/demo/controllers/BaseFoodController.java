@@ -33,10 +33,9 @@ public class BaseFoodController {
 
     @PostMapping
     @ApiOperation("Create a BaseFood")
-    public ResponseEntity addBaseFood(@ApiParam(name = "baseFood", value = "baseFood") @RequestBody BaseFood baseFood,
-                                      @ApiParam(name = "listIngredient", value = "listIngredient") @RequestBody List<Long> listIngredient) {
-        logger.info("Starting the creation");
-        baseFood = serviceImplementation.save(baseFood, listIngredient);
+    public ResponseEntity addBaseFood(@ApiParam(name = "baseFood", value = "baseFood") @RequestBody BaseFood baseFood) {
+        logger.info("Starting the BaseFood creation");
+        baseFood = serviceImplementation.save(baseFood);
         logger.info("Created");
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(baseFood.getId()).toUri();
         return ResponseEntity.created(uri).build();
@@ -47,7 +46,7 @@ public class BaseFoodController {
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     List<BaseFood> getAllBaseFood() {
-        logger.info("Starting the search");
+        logger.info("Starting the BaseFood search");
         return serviceImplementation.getAll();
     }
 
@@ -63,7 +62,7 @@ public class BaseFoodController {
     @ApiOperation("Deletes a BaseFood")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBaseFood(@ApiParam(name = "id", value = "long") @PathVariable long id) {
-        logger.info("Starting the deletion");
+        logger.info("Starting the BaseFood deletion");
         serviceImplementation.delete(id);
     }
 
@@ -72,7 +71,7 @@ public class BaseFoodController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBaseFood(@ApiParam(name = "id", value = "long") @PathVariable Long id,
                             @ApiParam(name = "lunch", value = "lunch") @RequestBody BaseFoodDto lunch) {
-        logger.info("Starting the update");
+        logger.info("Starting the BaseFood update");
         serviceImplementation.update(id, lunch);
     }
 }

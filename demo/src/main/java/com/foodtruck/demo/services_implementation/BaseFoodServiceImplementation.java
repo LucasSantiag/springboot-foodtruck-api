@@ -39,7 +39,7 @@ public class BaseFoodServiceImplementation implements BaseFoodService {
     }
 
     @Override
-    public BaseFood save(BaseFood baseFood, List<Long> listIngredient) {
+    public BaseFood save(BaseFood baseFood) {
         logger.info("Creating");
         return repository.save(baseFood);
     }
