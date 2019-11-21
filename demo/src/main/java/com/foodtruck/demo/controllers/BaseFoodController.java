@@ -70,7 +70,7 @@ public class BaseFoodController {
     @ApiOperation("Updates an existing BaseFood")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBaseFood(@ApiParam(name = "id", value = "long") @PathVariable Long id,
-                            @ApiParam(name = "lunch", value = "lunch") @RequestBody BaseFoodDto lunch) {
+                               @ApiParam(name = "lunch", value = "lunch") @RequestBody BaseFoodDto lunch) {
         logger.info("Starting the BaseFood update");
         serviceImplementation.update(id, lunch);
     }

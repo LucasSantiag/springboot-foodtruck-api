@@ -1,8 +1,8 @@
 package com.foodtruck.demo.services_implementation;
 
+import com.foodtruck.demo.dto.IngredientDto;
 import com.foodtruck.demo.exceptions.EntityNotFoundException;
 import com.foodtruck.demo.models.Ingredient;
-import com.foodtruck.demo.dto.IngredientDto;
 import com.foodtruck.demo.repositories.IngredientRepository;
 import com.foodtruck.demo.services.IngredientService;
 import org.slf4j.Logger;
