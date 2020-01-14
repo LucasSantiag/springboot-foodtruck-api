@@ -16,12 +16,3 @@ services:
 
 volumes:
   my-db:
-    #app:
-    #build: .
-    #volumes:
-    #- .:/app
-    #- ~/.m2:/root/.m2
-    #working_dir: /app
-    #command: mvn clean spring-boot:run
-    #depends_on:
-    #- hk-mysql
