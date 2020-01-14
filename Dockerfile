@@ -1,1 +1,8 @@
-FROM maven:3.5-jdk-8
+FROM openjdk:8
+
+ADD target/blablalba api-foodtruck.jar
+
+EXPOSE 8086
+
+ENTRYPOINT ["java", "-jar", "api-foodtruck.jar"]
+
