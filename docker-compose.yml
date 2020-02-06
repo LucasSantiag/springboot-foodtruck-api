@@ -5,7 +5,7 @@ services:
     restart: always 
     environment:
       MYSQL_DATABASE: 'db_foodtruck'
-      MYSQL_USER: 'springUser'
+      MYSQL_USER: 'root'
       MYSQL_ROOT_PASSWORD: 'springUser!'
       MYSQL_PASSWORD: 'springUser!'
     ports:
