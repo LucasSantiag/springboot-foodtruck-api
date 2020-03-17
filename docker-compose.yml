@@ -7,14 +7,21 @@ services:
     restart: always 
     environment:
       MYSQL_DATABASE: 'db_foodtruck'
-      MYSQL_USER: 'root'
+      MYSQL_USER: 'userFoodTruck'
       MYSQL_ROOT_PASSWORD: 'springUser!'
       MYSQL_PASSWORD: 'springUser!'
     ports:
       - '3308:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
 
-  client:
-    image: mysql:8.0.2
-    depends_on:
-      - mysql-dev
-    command: mysql -uroot -ppassword -hmysql-dev db_foodtruck 
+volumes:
+  my-db:
+
+#  client:
+#    image: mysql:8.0.2
+#    depends_on:
+#      - mysql-dev
+#    command: mysql -uroot -ppassword -hmysql-dev db_foodtruck
