@@ -20,8 +20,8 @@ import java.util.List;
 @Controller
 @RestController
 @RequestMapping("/order")
-public class OrderRepository {
-    private static final Logger logger = LoggerFactory.getLogger(OrderRepository.class);
+public class OrderController {
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private OrderServiceImplementation orderServiceImplementation;
@@ -36,7 +36,7 @@ public class OrderRepository {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Search for specific ingredient at database")
+    @ApiOperation("Search for specific order at database")
     @ResponseStatus(HttpStatus.OK)
     public Order getOrderById(@ApiParam(name = "id", type = "long") @PathVariable Long id) {
         logger.info("Starting the search");
@@ -44,7 +44,7 @@ public class OrderRepository {
     }
 
     @PostMapping
-    @ApiOperation("Add an ingredient at database")
+    @ApiOperation("Add an order at database")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Order> postOrder(@ApiParam(name = "order", value = "order") @RequestBody OrderDto orderDto) {
         logger.info("Starting order creation");
@@ -66,7 +66,7 @@ public class OrderRepository {
     @DeleteMapping("/{id}")
     @ApiOperation("Deletes a order")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteIngredient(@ApiParam(name = "id", value = "long") @PathVariable Long id) {
+    public void deleteOrder(@ApiParam(name = "id", value = "long") @PathVariable Long id) {
         logger.info("Starting the order deletion");
         orderServiceImplementation.delete(id);
     }
