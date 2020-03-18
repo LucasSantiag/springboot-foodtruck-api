@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   mysql-dev:
     image: mysql:8.0.2
     restart: always 
@@ -11,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'springUser!'
       MYSQL_PASSWORD: 'springUser!'
     ports:
-      - '3308:3306'
+      - '3306:3306'
     expose:
       - '3306'
     volumes:
@@ -19,9 +18,3 @@ services:
 
 volumes:
   my-db:
-
-#  client:
-#    image: mysql:8.0.2
-#    depends_on:
-#      - mysql-dev
-#    command: mysql -uroot -ppassword -hmysql-dev db_foodtruck
