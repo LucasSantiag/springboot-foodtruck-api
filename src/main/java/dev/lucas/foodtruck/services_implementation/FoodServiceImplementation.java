@@ -5,7 +5,6 @@ import dev.lucas.foodtruck.exceptions.EntityNotFoundException;
 import dev.lucas.foodtruck.models.Food;
 import dev.lucas.foodtruck.models.Ingredient;
 import dev.lucas.foodtruck.repositories.FoodRepository;
-import dev.lucas.foodtruck.repositories.IngredientRepository;
 import dev.lucas.foodtruck.services.FoodService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

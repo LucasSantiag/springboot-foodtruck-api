@@ -13,6 +13,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comments;
+    private double price;
 
     public Order setComments(String comments) {
         this.comments = comments;
@@ -21,6 +22,11 @@ public class Order {
 
     public Order setIngredientList(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
+        return this;
+    }
+
+    public Order setPrice(double price) {
+        this.price = price;
         return this;
     }
 

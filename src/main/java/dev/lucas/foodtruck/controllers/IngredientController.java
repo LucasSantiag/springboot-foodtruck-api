@@ -58,9 +58,9 @@ public class IngredientController {
     @ApiOperation("Updates an existing ingredients")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateIngredient(@ApiParam(name = "id", value = "long") @PathVariable Long id,
-                           @ApiParam(name = "ingredient", value = "ingredient") @RequestBody IngredientDto ingredient) {
+                           @ApiParam(name = "ingredient", value = "ingredient") @RequestBody IngredientDto ingredientDto) {
         logger.info("Starting the ingredient update");
-        serviceImplementation.update(id, ingredient);
+        serviceImplementation.update(id, ingredientDto);
     }
 
     @DeleteMapping("/{id}")
